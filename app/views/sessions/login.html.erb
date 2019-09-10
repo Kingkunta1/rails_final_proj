@@ -1,0 +1,9 @@
+<h1> Welcome back <%=@user.username %> </h1>
+
+<%= form_tag "/login" do %>
+  <%= label_tag :Username %>&nbsp;&nbsp;
+  <%= text_field_tag :username %>&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= label_tag :password %>&nbsp;&nbsp;
+  <%= password_field_tag :password %>&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= submit_tag "Login!" %>
+<% end %>
