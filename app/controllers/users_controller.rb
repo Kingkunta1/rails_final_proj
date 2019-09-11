@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
-      # flash.now[:error] = "Try Again. "
+      flash.now[:error] = "Try Again. "
       render :new
     end
 end
