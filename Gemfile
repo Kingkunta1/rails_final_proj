@@ -23,9 +23,9 @@ gem 'jbuilder', '~> 2.5'
  gem 'bcrypt', '~> 3.1.7'
  gem 'pry'
  gem 'allow_numeric'
- gem 'omniauth-oktaoauth'
- gem 'activerecord-session_store'
- gem 'figaro'
+ # gem 'omniauth-oktaoauth'
+ # gem 'activerecord-session_store'
+ # gem 'figaro'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       redirect_to "/users/#{@user.id}"
     else
       flash.now[:error] = "Try Again. "
-      render :new
+      redirect new_user_path 
     end
 end
 

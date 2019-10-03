@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     # 5. flash error message
     # 6. go back to login form
     # @user = User.find_by(username: params[:user][:username])
-    binding.pry
+    # binding.pry
     @user = User.find_by(username: params[:username])
     # binding.pry
     if @user && @user.authenticate(params[:password])
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
       flash[:error] = "Try again."
-      render :login
+      redirect_to "/login"
     end
   end
   # def create
