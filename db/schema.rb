@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2019_09_10_202504) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "email"
-    t.string "password"
     t.string "username"
   end
 

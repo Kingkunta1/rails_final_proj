@@ -1,22 +1,62 @@
 class SneakersController < ApplicationController
 
   def index
-    @sneakers = Sneaker.all
+
+    if params[:user_id]
+      # if we find a user , loçok for all sneakers for that user
+    # search for user
+      @sneakers = User.find(params[:user_id]).sneakers
+        # binding.pry
+    # specifically looking for user with find
+      if @user.nil?
+      # if user comes up as not there == nil
+
+        flash[:alert] = "User not here."
+      #  execute message
+      # go to user index page if user can't be foun
+      else
+        @sneakers = Sneaker.all
+      end
+    end
+
   end
 
   def show
-    @sneaker = Sneaker.find(params[:id])
+      # we use the user_id inputed
+      if params[:user_id]
+        # trying to find the user specifically
+        @user = User.find_by(id: params[:user_id])
+        # looking specifically for a sneaker to see if it matches the user's sneakers
+        @sneaker = @user.sneakers.find_by(id: params[:id])
+
+        if @sneaker.nil?
+          # if we cannot find the sneaker then
+          redirect_to users_sneakers_path(@user)
+        end
+
+          else
+
+            @sneaker = Sneaker.find(params[:id])
+          end
+
   end
 
   def new
     @sneaker = Sneaker.new
+    # byebug
   end
 
   def create
-    @sneaker = Sneaker.create(sneaker_params)
+    # new sneaker is being created by a current user
+    @sneaker = current_user.sneakers.build(sneaker_params)
+    # binding.pry
+      if @sneaker.save
 
-      # @sneaker.save
-    redirect_to "/sneakers/#{@sneaker.id}"
+        redirect_to sneaker_path(@sneaker)
+      else
+        render :new
+      end
+
   end
 
   def edit
@@ -24,8 +64,8 @@ class SneakersController < ApplicationController
   end
 
   def update
-    @sneaker = Sneaker.fid(parmas[:id])
-    @sneaker.update 
+    @sneaker = Sneaker.find(parmas[:id])
+    @sneaker.update
   end
 
   def destroy
@@ -37,7 +77,7 @@ class SneakersController < ApplicationController
 
   def sneaker_params
     # byebug
-    params.require(:sneaker).permit(:name)
+    params.require(:sneaker).permit(:name,:color,:shoesize,:user_id,:brand_id,:store_id)
     # controller => sneaker, attribute => name
   end
 end

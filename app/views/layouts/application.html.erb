@@ -10,8 +10,10 @@
   </head>
 
   <body>
-
-    <% link_to "Log Out", logout_path, method: :delete  %>
+    <ol>
+        <%= render "shared/nav" %>
+        
+    </ol>
     <%= yield %>
   </body>
 </html>

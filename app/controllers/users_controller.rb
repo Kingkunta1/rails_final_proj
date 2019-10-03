@@ -7,9 +7,13 @@ class UsersController < ApplicationController
 
   end
 
+  def more_than_one_sneaker
+    @users = User.more_than_one_sneaker
+  end
+
   def show
     @user = User.find(params[:id])
-    @sneaker = Sneaker.find(params[:id])
+    # @sneaker = Sneaker.find(params[:id])
   end
 
   # this loads signup form
@@ -21,8 +25,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     # byebug
-    if @user.save!
-      # @user.save
+    if @user.valid?
+       @user.save
         # session stores information for the user
         # we see if session username matches input username then proceed
         # then we redirect to some show path
@@ -35,11 +39,14 @@ class UsersController < ApplicationController
     end
 end
 
+
   def edit
     @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update
   end
 
   def destroy

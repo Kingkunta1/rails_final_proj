@@ -2,8 +2,14 @@
 
 <ul>
     <% @sneakers.each do |sneaker| %>
-  <li>
-    <%= link_to sneaker.name, sneaker %>
-  </li>
+      <li>
+        <%= link_to sneaker.name, sneaker %> ->
+        <%= link_to "Edit Sneaker", edit_sneaker_path(sneaker) %>
+
+      </li>
+
+
   <% end %>
+
 </ul>
+<%# <%= button_to "Edit Sneaker", { :action => "update" }, :method => :patch %>

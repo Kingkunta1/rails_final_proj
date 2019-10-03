@@ -4,5 +4,6 @@ class Sneaker < ApplicationRecord
   belongs_to :brand
 
    validates :name, uniqueness: true
+   validates :name, presence: true
 
 end

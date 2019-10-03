@@ -13,12 +13,13 @@ Store.destroy_all
 
 
 # ======================== user instances =================================
-kenton = User.create(username:"Kenton")
-kester = User.create(username:"Kester")
-kirk = User.create(username:"Kirk")
-miah = User.create(username:"Miah")
-arely = User.create(username:"Arely")
-samira = User.create(username:"Samira")
+
+kenton = User.create(username:"Kenton",email:"kenton@email.com",password: "abc123")
+kester = User.create(username:"Kester",email:"kester@email.com", password: "abc123")
+kirk = User.create(username:"Kirk",email:"kirk@email.com", password: "abc123")
+miah = User.create(username:"Miah",email:"miah@email.com", password: " abc123")
+arely = User.create(username:"Arely",email:"arely@email.com", password: "abc123")
+samira = User.create(username:"Samira",email:"samira@email.com", password: "abc123")
 
 # ========================= stores instances ===============================
 macys = Store.create(name:"Macys")

@@ -1,9 +1,28 @@
-<h1> Welcome back <%=@user.username %> </h1>
+<h1> Welcome back </h1>
 
 <%= form_tag "/login" do %>
-  <%= label_tag :Username %>&nbsp;&nbsp;
-  <%= text_field_tag :username %>&nbsp;&nbsp;&nbsp;&nbsp;
-  <%= label_tag :password %>&nbsp;&nbsp;
-  <%= password_field_tag :password %>&nbsp;&nbsp;&nbsp;&nbsp;
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2>There were some errors:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field<%= ' field_with_errors' if @user.errors[:username].any? %>">
+    <%= label_tag "username", "Username" %>
+    <%= text_field_tag "username", @user.username %>
+  </div>
+  <%#
+  <%= label_tag :username %>
+
+
+  <div class="field<%= ' field_with_errors' if @user.errors[:password].any? %>">
+    <%= label_tag "password", "Password" %>
+    <%= password_field_tag "password", @user.password %>
+  </div>
   <%= submit_tag "Login!" %>
-<% end %>
+  <% end %>

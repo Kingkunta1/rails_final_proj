@@ -4,11 +4,29 @@
 
 <h1>Fyah Kick's🔥🔥🔥🔥🔥 </h1>
 
-
-
-
 <%= form_for @sneaker do |f| %>
 <%=f.label "sneaker name"%>
 <%=f.text_field :name %>
+<%=f.label "color" %>
+<%=f.text_field :color %>
+<%=f.label "Shoe size" %>
+<%=f.text_field :shoesize,data: { numeric: true }%>
+<%=f.collection_select :store_id,Store.all,:id,:name %>
+<%=f.collection_select :brand_id,Brand.all,:id,:name %>
+<%# <%= f.collection_select :race, Race.all, :id, :name, prompt: true %>
+<%# f.collection_select :topic, Topic.all, :id, :category %>
 <%=f.submit "Create Sneaker"%>
 <% end%>
+
+<% if @sneaker.errors.any? %>
+<div id="error_explanation">
+<h2><%= pluralize(@sneaker.errors.count, "error") %>
+  prohibited this sneaker from being saved:</h2>
+
+  <ul>
+    <% @sneaker.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
