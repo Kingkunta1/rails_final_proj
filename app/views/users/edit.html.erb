@@ -1,0 +1,13 @@
+
+
+
+<%= form_for @user do |f| %>
+
+<%=f.label "user_name" %>
+<%=f.text_field :username %>
+
+<%=f.label "email" %>
+<%=f.email_field :email %>
+
+<%=f.submit  "Update User"%>
+<% end%>

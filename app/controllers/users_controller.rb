@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       redirect_to "/users/#{@user.id}"
     else
       flash.now[:error] = "Try Again. "
-      redirect new_user_path 
+      render :new
     end
 end
 
@@ -46,7 +46,13 @@ end
 
   def update
     @user = User.find(params[:id])
-    @user.update
+    if @user.valid?
+        @user.update(user_params)
+          redirect_to user_path(@user)
+      else
+        flash[:errors] = @user.errors.full.messages
+          redirect_to edit_user_path(@user)
+    end
   end
 
   def destroy

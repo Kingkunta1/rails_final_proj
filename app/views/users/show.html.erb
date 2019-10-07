@@ -5,11 +5,12 @@
 
 <ul>
    <% @user.sneakers.each do |s| %>
-      <h3> <li> <%= link_to s.name, sneaker_path(s) %> </li> </h3>
+      <h3> <li> <%= link_to s.name, user_sneaker_path(@user, s) %> </li> </h3>
           <% end  %>
 
-          
+
 </ul>
 
-  <h4>Would you like to create a sneaker</h4>
-  <h5> <%= link_to "Click here", new_sneaker_path %> </h5>
+  <h4>Edit your profile</h4>
+  <h5> <%= link_to "Edit Sneaker", new_sneaker_path %>  </h5>
+  <h5><%= link_to "Edit User", edit_user_path(@user)  %></h5>

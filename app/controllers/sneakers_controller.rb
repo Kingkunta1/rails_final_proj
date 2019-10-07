@@ -23,6 +23,7 @@ class SneakersController < ApplicationController
 
   def show
       # we use the user_id inputed
+      # binding.pry
       if params[:user_id]
         # trying to find the user specifically
         @user = User.find_by(id: params[:user_id])
@@ -50,12 +51,13 @@ class SneakersController < ApplicationController
     # new sneaker is being created by a current user
     @sneaker = current_user.sneakers.build(sneaker_params)
     # binding.pry
-      if @sneaker.save
-
+    if @sneaker.valid?
+        @sneaker.save
         redirect_to sneaker_path(@sneaker)
       else
         render :new
       end
+
 
   end
 
@@ -64,13 +66,26 @@ class SneakersController < ApplicationController
   end
 
   def update
-    @sneaker = Sneaker.find(parmas[:id])
-    @sneaker.update
+    @sneaker = Sneaker.find(params[:id])
+    if @sneaker.valid?
+      @sneaker.update
+      # binding.pry
+      redirect_to sneaker_path(@sneaker)
+    else
+      flash[:error] = @sneaker.errors.full.messages
+      redirect_to edit_sneaker_path(@sneaker)
+    end
   end
 
   def destroy
     @sneaker = Sneaker.find(params[:id])
-    @sneaker.destroy
+    if @sneaker.user_id  == current_user.id
+      @sneaker.destroy
+      redirect_to user_path(current_user)
+    else
+      redirect_to users_path
+    end
+
   end
 
   private

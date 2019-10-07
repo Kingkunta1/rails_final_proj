@@ -1,23 +1,26 @@
 <h1> Welcome back </h1>
 
+
+<%= render partial: "layouts/errors", locals: { object: @user} %>
+
 <%= form_tag "/login" do %>
-<% if @user.errors.any? %>
-<div id="error_explanation">
-  <h2>There were some errors:</h2>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>There were some errors:</h2>
         <ul>
           <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
       </div>
-    <% end %>
+  <% end %>
 
   <div class="field<%= ' field_with_errors' if @user.errors[:username].any? %>">
     <%= label_tag "username", "Username" %>
     <%= text_field_tag "username", @user.username %>
   </div>
-  <%#
-  <%= label_tag :username %>
+
+  <%# <%= label_tag :username %>
 
 
   <div class="field<%= ' field_with_errors' if @user.errors[:password].any? %>">
@@ -25,4 +28,6 @@
     <%= password_field_tag "password", @user.password %>
   </div>
   <%= submit_tag "Login!" %>
+
+
   <% end %>

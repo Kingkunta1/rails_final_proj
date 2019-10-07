@@ -5,5 +5,7 @@ class Sneaker < ApplicationRecord
 
    validates :name, uniqueness: true
    validates :name, presence: true
+   validates :color, presence: true
+
 
 end

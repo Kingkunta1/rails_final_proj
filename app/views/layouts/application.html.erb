@@ -11,8 +11,11 @@
 
   <body>
     <ol>
-        <%= render "shared/nav" %>
-        
+        <% if logged_in  %>
+          <%= render "shared/nav" %>
+        <% end  %>
+
+
     </ol>
     <%= yield %>
   </body>
