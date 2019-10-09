@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get '/more_than_one_sneaker' => 'users#more_than_one_sneaker'
   get'/signup'=> 'users#new'
   get'/login'=>'sessions#new'
   post'/login'=>'sessions#create'
+  get '/users/more_than_one_sneaker' => 'users#more_than_one_sneaker'
   delete '/logout' =>'sessions#destroy'
   get'/auth/google_oauth2/callback' => 'sessions#google'
 

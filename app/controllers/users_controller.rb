@@ -7,16 +7,12 @@ class UsersController < ApplicationController
 
   end
 
-  def more_than_one_sneaker
-    @users = User.more_than_one_sneaker
-  end
 
   def show
     @user = User.find(params[:id])
     # @sneaker = Sneaker.find(params[:id])
   end
 
-  # this loads signup form
   def new
     @user = User.new
   end
@@ -38,7 +34,11 @@ class UsersController < ApplicationController
       render :new
     end
 end
+# this loads signup form
 
+  def more_than_one_sneaker
+    @users = User.more_than_one_sneaker
+  end
 
   def edit
     @user = User.find(params[:id])
@@ -47,8 +47,10 @@ end
   def update
     @user = User.find(params[:id])
     if @user.valid?
-        @user.update(user_params)
-          redirect_to user_path(@user)
+        @user.update
+        session[:user_id] = @user.id
+        binding.pry
+        redirect_to user_path(@user)
       else
         flash.now[:error] = "Try Again."
           render :edit
