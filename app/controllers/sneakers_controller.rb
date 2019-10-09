@@ -73,7 +73,7 @@ class SneakersController < ApplicationController
       redirect_to sneaker_path(@sneaker)
     else
       flash[:error] = @sneaker.errors.full.messages
-      redirect_to edit_sneaker_path(@sneaker)
+      render :edit
     end
   end
 

@@ -53,5 +53,30 @@ class SessionsController < ApplicationController
     redirect_to '/'
   end
 
+  # validates :username,:email, presence: true
+  # validates :email, :username, uniqueness: true
+  # validates :username, length: { minimum: 5 }
+  # validates :password, length: {minimum: 5}
+
+
+  def google
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.username = auth['info']['name']
+      u.email = auth['info']['email']
+      u.password = auth['uid']
+
+  end
+      #
+    session[:user_id] = @user.id
+    # binding.pry
+    redirect_to user_path(@user)
+
+  end
+
+    private
+
+  def auth
+      request.env['omniauth.auth']
+  end
 
 end

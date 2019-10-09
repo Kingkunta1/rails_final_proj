@@ -50,8 +50,8 @@ end
         @user.update(user_params)
           redirect_to user_path(@user)
       else
-        flash[:errors] = @user.errors.full.messages
-          redirect_to edit_user_path(@user)
+        flash.now[:error] = "Try Again."
+          render :edit
     end
   end
 
