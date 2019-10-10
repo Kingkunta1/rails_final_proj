@@ -15,3 +15,5 @@
   <!-- <h5> <%= link_to "Edit Sneaker", edit_sneaker_path() %>  </h5> -->
   <h5><%= link_to "Edit User", edit_user_path(@user)  %></h5>
   <h5><%= link_to "Create Sneaker", new_sneaker_path %></h5>
+  <!-- <h5><%= link_to "Delete User", user_path: :delete %></h5> -->
+<h5><%= link_to 'Delete',url_for(action: :delete,id: @user.id),method: :delete, data: {confirm: "Are you sure?"}%> </h5>

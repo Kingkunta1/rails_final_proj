@@ -2,16 +2,32 @@
 
 
 <%= form_for @user do |f| %>
+ <ol>
 
-<%=f.label "user_name" %>
-<%=f.text_field :username %>
 
-<%=f.label "email" %>
-<%=f.email_field :email %>
+<div>
 
-<%=f.label "password" %>
-<%=f.password_field :password %>
+  <%=f.label "user_name" %>
+  <%=f.text_field :username %>
 
+</div>
+
+
+<div>
+
+  <%=f.label "email" %>
+  <%=f.email_field :email %>
+</div>
+
+<div>
+
+  <%=f.label "password" %>
+  <%=f.password_field :password %>
+
+</div>
 
 <%=f.submit  "Update User"  %>
 <% end%>
+</ol>
+
+<%= render partial: "layouts/errors", locals: { object: @user } %>

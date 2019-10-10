@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         # then we redirect to some show path
         #  if it does not match we then render a new form
       session[:user_id] = @user.id
-      redirect_to "/users/#{@user.id}"
+      redirect_to "/user/#{@user.id}"
     else
       flash.now[:error] = "Try Again. "
       render :new
@@ -41,25 +41,35 @@ end
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.valid?
-        @user.update
-        session[:user_id] = @user.id
-        binding.pry
-        redirect_to user_path(@user)
-      else
-        flash.now[:error] = "Try Again."
+      # current_user is session[:user_id]
+      # binding.pry
+       @user = current_user
+        @user.update(user_params)
+        if @user.valid?
+          @user.save
+          redirect_to user_path(@user)
+        else
+          flash.now[:error] = "Try Again."
           render :edit
-    end
+
+    # @sneaker = Sneaker.find(params[:id])
+    # if @sneaker.user_id  == current_user.id
+    #   @sneaker.destroy
+    #   redirect_to user_path(current_user)
+    # else
+    #   redirect_to users_path
+
+        end
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    redirect_to users_path
   end
 
   private
