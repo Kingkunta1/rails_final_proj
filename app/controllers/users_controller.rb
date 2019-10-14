@@ -62,14 +62,19 @@ end
     #   redirect_to user_path(current_user)
     # else
     #   redirect_to users_path
-
         end
   end
 
   def destroy
+    binding.pry
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to users_path
+     if @user.id == current_user.id
+    binding.pry
+      @user.destroy
+      redirect_to users_path, notice: "Delete success"
+     else
+      redirect_to user_path(current_user)
+     end
   end
 
   private

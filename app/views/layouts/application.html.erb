@@ -14,9 +14,12 @@
         <% if logged_in  %>
           <%= render "shared/nav" %>
         <% end  %>
-
-
     </ol>
+
+    <% flash.each do |name, msg| -%>
+     <%= content_tag :div, msg, class: name %>
+     <% end -%>
+
     <%= yield %>
   </body>
 </html>
