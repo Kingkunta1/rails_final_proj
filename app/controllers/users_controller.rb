@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         # then we redirect to some show path
         #  if it does not match we then render a new form
       session[:user_id] = @user.id
-      redirect_to "/user/#{@user.id}"
+      redirect_to "/users/#{@user.id}"
     else
       flash.now[:error] = "Try Again. "
       render :new
@@ -66,10 +66,10 @@ end
   end
 
   def destroy
-    binding.pry
+    # binding.pry
     @user = User.find(params[:id])
      if @user.id == current_user.id
-    binding.pry
+    # binding.pry
       @user.destroy
       redirect_to users_path, notice: "Delete success"
      else

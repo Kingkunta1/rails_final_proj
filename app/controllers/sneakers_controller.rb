@@ -68,7 +68,7 @@ class SneakersController < ApplicationController
   def update
     @sneaker = Sneaker.find(params[:id])
     if @sneaker.valid?
-      @sneaker.update
+      @sneaker.update(sneaker_params)
       # binding.pry
       redirect_to sneaker_path(@sneaker)
     else
