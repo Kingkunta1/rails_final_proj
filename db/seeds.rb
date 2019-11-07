@@ -10,7 +10,17 @@ Sneaker.destroy_all
 Brand.destroy_all
 User.destroy_all
 Store.destroy_all
+Category.destroy_all
 
+# ========================== category instances==============================
+
+workout = Category.create(name:"workout")
+get_fresh = Category.create(name:"get fresh")
+basketball = Category.create(name:"basketball")
+football = Category.create(name:"football")
+soccer = Category.create(name:"soccer")
+wrestlin = Category.create(name:"wrestlin")
+running = Category.create(name:"running")
 
 # ======================== user instances =================================
 
@@ -38,11 +48,12 @@ saucony = Brand.create(name:"Saucony")
 new_balance = Brand.create(name:"New Balance")
 
 # ========================== sneaker instances ==================================
-true_blood = Sneaker.create(name:"True Blood", shoesize: 9,color:"red",user_id:kenton.id,brand_id:nike.id,store_id:flight_club.id)
-sour_bud = Sneaker.create(name:"Sour Bud", shoesize: 8,color:"green",user_id:kester.id,brand_id:puma.id,store_id:foot_locker.id)
-lighting = Sneaker.create(name:"Lighting", shoesize: 5,color:"yellow",user_id:kirk.id,brand_id:jordan.id,store_id:macys.id)
-subzero = Sneaker.create(name:"Subzero", shoesize: 10,color:"blue",user_id:miah.id,brand_id:sketcher.id,store_id:david_z.id)
-lite_mint = Sneaker.create(name:"Lite Mint", shoesize: 10,color:"light green",user_id:samira.id,brand_id:saucony.id,store_id:footware.id)
-pearl = Sneaker.create(name:"Pearl", shoesize: 14,color:"White",user_id:arely.id,brand_id:new_balance.id,store_id:payless.id)
-crystal = Sneaker.create(name:"Crystal", shoesize: 7,color:"clear",user_id:arely.id,brand_id:nike.id,store_id:flight_club.id)
-phantom_menace = Sneaker.create(name:"Phantom Menace", shoesize: 14,color:"black and red",user_id:kenton.id,brand_id:jordan.id,store_id:foot_locker.id)
+true_blood = Sneaker.create(name:"True Blood", shoesize: 9,color:"red",user_id:kenton.id,brand_id:nike.id,store_id:flight_club.id,category_id:get_fresh)
+sour_bud = Sneaker.create(name:"Sour Bud", shoesize: 8,color:"green",user_id:kester.id,brand_id:puma.id,store_id:foot_locker.id,category_id:get_fresh)
+lighting = Sneaker.create(name:"Lighting", shoesize: 5,color:"yellow",user_id:kirk.id,brand_id:jordan.id,store_id:macys.id,category_id:running)
+subzero = Sneaker.create(name:"Subzero", shoesize: 10,color:"blue",user_id:miah.id,brand_id:sketcher.id,store_id:david_z.id,category_id:basketball)
+lite_mint = Sneaker.create(name:"Lite Mint", shoesize: 10,color:"light green",user_id:samira.id,brand_id:saucony.id,store_id:footware.id,category_id:running)
+pearl = Sneaker.create(name:"Pearl", shoesize: 14,color:"White",user_id:arely.id,brand_id:new_balance.id,store_id:payless.id,category_id:get_fresh)
+crystal = Sneaker.create(name:"Crystal", shoesize: 7,color:"clear",user_id:arely.id,brand_id:nike.id,store_id:flight_club.id,category_id:soccer)
+phantom_menace = Sneaker.create(name:"Phantom Menace", shoesize: 14,color:"black and red",user_id:kenton.id,brand_id:jordan.id,store_id:foot_locker.id,category_id:wrestlin)
+# phantom_menace = Sneaker.create(name:"Phantom Menace", shoesize: 14,color:"black and red",user_id:kenton.id,brand_id:jordan.id,store_id:foot_locker.id)

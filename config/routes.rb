@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 
   # ominauth response back from server
-  resources :categories, only:[:show,:new]
+  resources :categories, only:[:show,:new,:create]
   resources :sneakers
   resources :brands, only:[:index,:show]
   resources :stores, only:[:index,:show]
