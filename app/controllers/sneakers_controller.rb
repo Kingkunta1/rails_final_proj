@@ -1,4 +1,5 @@
 class SneakersController < ApplicationController
+  before_action :set_sneaker, only:[:edit,:update,:destroy]
 
   def index
 
@@ -50,23 +51,25 @@ class SneakersController < ApplicationController
   def create
     # new sneaker is being created by a current user
     @sneaker = current_user.sneakers.build(sneaker_params)
-    # binding.pry
-    if @sneaker.valid?
-        @sneaker.save
+    # @sneaker.save
+    if @sneaker.save
+        # @sneaker.save
         redirect_to sneaker_path(@sneaker)
+        # new http request with redirect
       else
         render :new
+        # render allows the sent request to be retained and showing the file/data
       end
 
 
   end
 
   def edit
-    @sneaker = Sneaker.find(params[:id])
+    # binding.pry
+    # set_sneaker
   end
 
   def update
-    @sneaker = Sneaker.find(params[:id])
     if @sneaker.valid?
       @sneaker.update(sneaker_params)
       # binding.pry
@@ -78,7 +81,6 @@ class SneakersController < ApplicationController
   end
 
   def destroy
-    @sneaker = Sneaker.find(params[:id])
     if @sneaker.user_id  == current_user.id
       @sneaker.destroy
       redirect_to user_path(current_user)
@@ -90,9 +92,13 @@ class SneakersController < ApplicationController
 
   private
 
+    def set_sneaker
+      @sneaker = Sneaker.find(params[:id])
+    end
+
   def sneaker_params
     # byebug
-    params.require(:sneaker).permit(:name,:color,:shoesize,:user_id,:brand_id,:store_id)
+    params.require(:sneaker).permit(:name,:color,:shoesize,:user_id,:brand_id,:store_id,:category_id)
     # controller => sneaker, attribute => name
   end
 end

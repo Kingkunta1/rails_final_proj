@@ -1,4 +1,12 @@
 <h1> All Brands </h1>
 <li>
- <%= @brands.name  %>
+ <% @brands.each do |b| %>
+  <li><%= b.name %> </li>
+ <% end  %>
+
+  <br> <%= form_with(url: "/brands", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 </li>

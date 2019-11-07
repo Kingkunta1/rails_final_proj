@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/users/more_than_one_sneaker' => 'users#more_than_one_sneaker'
   delete '/logout' =>'sessions#destroy'
   get'/auth/google_oauth2/callback' => 'sessions#google'
+  get '/search' => 'brands#search'
+
 
   resources :users do
 
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
 
 
   # ominauth response back from server
-
+  resources :categories, only:[:show,:new]
   resources :sneakers
   resources :brands, only:[:index,:show]
   resources :stores, only:[:index,:show]

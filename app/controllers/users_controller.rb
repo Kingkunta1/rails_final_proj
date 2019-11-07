@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # before_action :set_user, only:[:edit,:update,:destroy]
 
   def index
 
@@ -78,6 +79,10 @@ end
   end
 
   private
+
+  # def set_sneaker
+  #       @user = User.find(params[:id])
+  # end
 
   def user_params
     # byebug
