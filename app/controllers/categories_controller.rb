@@ -3,7 +3,8 @@ class CategoriesController < ApplicationController
 
 
   def show
-
+    @sneaker = Sneaker.all
+    # binding.pry
   end
 
   def new
@@ -12,6 +13,9 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.create(category_params)
+    # binding.pry
+
+    # @category = Category.create(category_params)
     redirect_to category_path(@category)
   end
 
@@ -24,12 +28,12 @@ class CategoriesController < ApplicationController
   private
 
 
-    def set_category
+  def set_category
         @category = Category.find(params[:id])
-    end
+  end
 
-    def category_params
+  def category_params
       params.require(:category).permit(:name)
-    end
+  end
 
 end

@@ -92,9 +92,9 @@ class SneakersController < ApplicationController
 
   private
 
-    def set_sneaker
+  def set_sneaker
       @sneaker = Sneaker.find(params[:id])
-    end
+  end
 
   def sneaker_params
     # byebug

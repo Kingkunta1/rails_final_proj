@@ -10,7 +10,9 @@
  - The category show page should display the name of the category as well as a list of all the sneakers that fall into a category
 (You can create sneaker objects in your seeds file) %>
   <ol>
-    <li><%= @category.name %></li>
+    <% @sneaker.each do |s| %>
+   <li> <%= s.category.name %> </li>
+    <% end  %>
  </ol>
 
  <!-- I need to display the sneakers that fall into a category -->

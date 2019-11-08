@@ -14,38 +14,96 @@ Category.destroy_all
 
 # ========================== category instances==============================
 
-workout = Category.create(name:"workout")
-get_fresh = Category.create(name:"get fresh")
-basketball = Category.create(name:"basketball")
-football = Category.create(name:"football")
-soccer = Category.create(name:"soccer")
-wrestlin = Category.create(name:"wrestlin")
-running = Category.create(name:"running")
+categories = [ { name:"workout"},
+               { name:"get fresh"},
+               { name:"basketball"},
+               { name:"football"},
+               { name:"soccer"},
+               { name:"wrestlin"},
+               { name:"running"}
+             ]
+
+categories.each { |category| Category.create(category)}
+
+# workout = Category.create(name:"workout")
+# get_fresh = Category.create(name:"get fresh")
+# basketball = Category.create(name:"basketball")
+# football = Category.create(name:"football")
+# soccer = Category.create(name:"soccer")
+# wrestlin = Category.create(name:"wrestlin")
+# running = Category.create(name:"running")
 
 # ======================== user instances =================================
 
-kenton = User.create(username:"Kenton",email:"kenton@email.com",password: "abc123")
-kester = User.create(username:"Kester",email:"kester@email.com", password: "abc123")
-kirk = User.create(username:"Kirk",email:"kirk@email.com", password: "abc123")
-miah = User.create(username:"Miah",email:"miah@email.com", password: " abc123")
-arely = User.create(username:"Arely",email:"arely@email.com", password: "abc123")
-samira = User.create(username:"Samira",email:"samira@email.com", password: "abc123")
+users =   [ { username:"Kenton", email:"kenton@email.com", password:"abc123"},
+            { username:"Kester", email:"kester@email.com", password:"abc123"},
+            { username:"Kirk", email:"kirk@email.com", password:"abc123"},
+            { username:"Miah", email:"miah@email.com", password:"abc123"},
+            { username:"Arely", email:"arely@email.com", password:"abc123"},
+            { username:"Samira", email:"samira@email.com", password:"abc123"}
+          ]
+
+users.each { |user| User.create(user)}
+
+# kenton = User.create(username:"Kenton",email:"kenton@email.com",password: "abc123")
+# kester = User.create(username:"Kester",email:"kester@email.com", password: "abc123")
+# kirk = User.create(username:"Kirk",email:"kirk@email.com", password: "abc123")
+# miah = User.create(username:"Miah",email:"miah@email.com", password: " abc123")
+# arely = User.create(username:"Arely",email:"arely@email.com", password: "abc123")
+# samira = User.create(username:"Samira",email:"samira@email.com", password: "abc123")
 
 # ========================= stores instances ===============================
-macys = Store.create(name:"Macys")
-foot_locker = Store.create(name:"Foot Locker")
-payless = Store.create(name:"Payless")
-footware = Store.create(name:"Footware")
-flight_club = Store.create(name:"Flight Club")
-david_z = Store.create(name:"David z")
+
+stores = [  { name:"Macys"},
+            { name:"foot_locker"},
+            { name:"footware"},
+            { name:"flight_club"},
+            { name:"david_z"},
+          ]
+
+stores.each { |store| Store.create(store)}
+
+# macys = Store.create(name:"Macys")
+# foot_locker = Store.create(name:"Foot Locker")
+# payless = Store.create(name:"Payless")
+# footware = Store.create(name:"Footware")
+# flight_club = Store.create(name:"Flight Club")
+# david_z = Store.create(name:"David z")
 # footware = Store.create(name:"Macys")
 # ======================= brand instances =====================================
-nike = Brand.create(name:"Nike")
-puma = Brand.create(name:"puma")
-sketcher = Brand.create(name:"Sketcher")
-jordan = Brand.create(name:"Jordan")
-saucony = Brand.create(name:"Saucony")
-new_balance = Brand.create(name:"New Balance")
+
+
+brands = [ {name:"nike" },
+           {name:"puma" },
+           {name:"sketcher"},
+           {name:"jordon"},
+           {name:"saucony"},
+           {name:"new_balance"}
+         ]
+
+brands = brands.map { |brand| brand.merge( {store_id: Store.all.sample.id } ) }
+
+brands.each { |brand| Brand.create(brand)}
+# nike = Brand.create(name:"Nike")
+# puma = Brand.create(name:"puma")
+# sketcher = Brand.create(name:"Sketcher")
+# jordan = Brand.create(name:"Jordan")
+# saucony = Brand.create(name:"Saucony")
+# new_balance = Brand.create(name:"New Balance")
+# #
+# heroines = heroines.map { |heroine| heroine.merge( { power_id: Power.all.sample.id } ) }
+# heroines.each { |heroine| Heroine.create(heroine) }
+# heroines = [
+# #   {name: "Kamala Khan",super_name:"Ms. Marvel"},
+# #   {name: "Doreen Green",super_name:"Squirrel Girl"},
+# #   {name:"Gwen Stacy",super_name:"Spider-Gwen"},
+# #   {name:"Janet Van Dyne",super_name:"The Wasp"},
+# #   {name:"Wanda Maximoff",super_name:"Scarlet Witch"},
+# #   {name:"Carol Danvers",super_name:"Captain Marvel"},
+# #   {name:"Jean Grey",super_name:"Dark Phoenix"},
+# #   {name:"Ororo Munroe",super_name:"Storm"},
+# #   {name:"Kitty Pryde",super_name:"Shadowcat"},
+# #   {name:"Elektra Natchios",super_name:"Elektra"}
 
 # ========================== sneaker instances ==================================
 true_blood = Sneaker.create(name:"True Blood", shoesize: 9,color:"red",user_id:kenton.id,brand_id:nike.id,store_id:flight_club.id,category_id:get_fresh.id)
