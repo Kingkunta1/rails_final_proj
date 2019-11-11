@@ -9,6 +9,14 @@ class BrandsController < ApplicationController
   end
 end
 
+ def new
+   @brand = Brand.new
+ end
+
+ def create
+  @brand = Brand.create(brands_params)
+ end
+
   def  show
     @brand = Brand.find(params[:id])
   end
@@ -19,6 +27,12 @@ end
     @brand = Brand.find_by(name: params[:q])
       redirect_to @brand
     # binding.pry
+  end
+
+  private
+
+  def brands_params
+    params.require(:brand).permit(:name,:store_id)
   end
 
 end

@@ -11,8 +11,7 @@
 <%=f.text_field :color %>
 <%=f.label "Shoe size" %>
 <%=f.text_field :shoesize,data: { numeric: true }%>
-<%=f.label "sneaker category"%>
-<%=f.text_field :category %>
+<%=f.collection_select :category_id,Category.all,:id,:name %>
 <%=f.collection_select :store_id,Store.all,:id,:name %>
 <%=f.collection_select :brand_id,Brand.all,:id,:name %>
 <%# <%= f.collection_select :race, Race.all, :id, :name, prompt: true %>

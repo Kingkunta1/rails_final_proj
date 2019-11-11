@@ -4,19 +4,20 @@ class SneakersController < ApplicationController
   def index
 
     if params[:user_id]
-      # if we find a user , loçok for all sneakers for that user
-    # search for user
+    #   # if we find a user , loçok for all sneakers for that user
+    # # search for user
       @sneakers = User.find(params[:user_id]).sneakers
-        # binding.pry
-    # specifically looking for user with find
+    #     # binding.pry
+    # # specifically looking for user with find
       if @user.nil?
-      # if user comes up as not there == nil
-
+    #   # if user comes up as not there == nil
+    #
         flash[:alert] = "User not here."
-      #  execute message
-      # go to user index page if user can't be foun
+    #   #  execute message
+    #   # go to user index page if user can't be foun
       else
         @sneakers = Sneaker.all
+    #     # binding.pry
       end
     end
 
@@ -49,8 +50,10 @@ class SneakersController < ApplicationController
   end
 
   def create
+    # binding.pry
     # new sneaker is being created by a current user
     @sneaker = current_user.sneakers.build(sneaker_params)
+    binding.pry
     # @sneaker.save
     if @sneaker.save
         # @sneaker.save

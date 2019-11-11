@@ -1,9 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only:[:show,:destroy]
 
+  def index
+    @categories = Category.all
+  end
+
 
   def show
-    @sneaker = Sneaker.all
+    @sneakers = Sneaker.where({category: params[:id] })
+
     # binding.pry
   end
 
@@ -23,10 +28,7 @@ class CategoriesController < ApplicationController
     @category.destroy
   end
 
-
-
   private
-
 
   def set_category
         @category = Category.find(params[:id])
