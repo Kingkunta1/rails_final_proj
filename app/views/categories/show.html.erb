@@ -11,7 +11,7 @@
 (You can create sneaker objects in your seeds file) %>
   <ol>
     <% @sneakers.each do |s| %>
-   <li> <%= s.name %> </li>
+   <li> <%= link_to s.name, sneaker_path(s) %> </li>
     <% end  %>
  </ol>
 

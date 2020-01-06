@@ -1,6 +1,26 @@
+
+<%= form_tag("/category_search", method: :get) do %>
+  <%= label_tag(:q, "Search for: ") %>
+  <%= text_field_tag :category, (:q) %>
+  <%# Store <%= text_field_tag :store, params[:store] %> 
+  <%= submit_tag 'Search' , name:nil %>
+<% end %>
+
+<%# :q => parameter %>
+<%# method is get because it sends the parameter to the url %>
+<%# post request can never be seen by outside user, therefor cannot save it %>
+<%# get request allows parameter to be saved  %>
+<%# whatever input is being typed into search bar it will be revealed in the url   %>
+<%# why form tag over form for? %>
+<%# form for used for creating or updating model/object %>
+<%# form tag is used for retreiving info  %>
+<%# the method get sends the parameter in the URL %>
+<%# allows change in the parameter for the URL  %>
+<%# we use a scope search querey method to search wihtin our model not controller nor view %>
+<%#  %>
 <h1>All Categories</h1>
 
-<% @categories.each do |c| %>
+<% @categories.map do |c| %>
 <ul>
     <li><%= link_to c.name,category_path(c) %></li>
 </ul>

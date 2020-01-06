@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get '/users/more_than_one_sneaker' => 'users#more_than_one_sneaker'
   delete '/logout' =>'sessions#destroy'
   get'/auth/google_oauth2/callback' => 'sessions#google'
+  get '/category_search' => 'categories#category_search'
   get '/search' => 'brands#search'
+
 
 
   resources :users do
