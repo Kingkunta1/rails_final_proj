@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only:[:show,:destroy]
 
   def index
-    binding.pry
+    # binding.pry
     @categories = Category.all
       # if params[:q]
         # @categories = Category.search(params[:q])
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
   end
 
   def category_search
-   binding.pry
+   # binding.pry
      @all_cats = Category.all
      # all the category objects
      # @categories =
