@@ -20,7 +20,7 @@
 <%#  %>
 <h1>All Categories</h1>
 
-<% @categories.map do |c| %>
+<% @all_cats.map do |c| %>
 <ul>
     <li><%= link_to c.name,category_path(c) %></li>
 </ul>
